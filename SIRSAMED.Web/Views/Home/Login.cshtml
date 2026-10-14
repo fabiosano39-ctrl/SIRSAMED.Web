@@ -1,9 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Iniciar Sesión - SIRSA MED";
+   ViewData["Title"] = "Iniciar Sesión - SIRSA MED";
 }
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card shadow-lg p-4" style="max-width: 420px; width: 100%; border-top: 5px solid #002D62;">
+<div class="container d-flex justify-content-center align-items-center" 
+style="min-height: 85vh;">
+
+                               @* Tarjeta principal del login  *@
+
+    <div class="card shadow-lg p-4" style="max-width: 420px; width:  
+     100%; border-top: 5px solid #002D62;">
+
+                                @*Encabezado con logo y título *@
         <div class="text-center mb-4">
             <h3 class="fw-bold text-primary" style="color: #002D62 !important;">SIRSA MED</h3>
             <p class="text-muted small">República Dominicana | Salud Pública</p>
@@ -11,31 +18,60 @@
             <h5 class="fw-semibold">Acceso a la Plataforma</h5>
         </div>
 
+                               @*Alerta de error si falla la clave *@
         @if (ViewBag.Error != null)
         {
             <div class="alert alert-danger p-2 small text-center" role="alert">
-                @ViewBag.Error
+             @ViewBag.Error
             </div>
         }
 
+                                 @* Formulario de acceso *@
         <form asp-action="Login" method="post">
+
+                                @* Campo de usuario o rnc *@
             <div class="mb-3">
                 <label for="correo" class="form-label small fw-bold">Correo Institucional o RNC</label>
                 <input type="email" class="form-control" id="correo" name="correo" required placeholder="usuario@salud.gob.do" />
             </div>
 
-            <div class="mb-3">
+                                   @* Campo de clave*@
+            <div class="mb-2">
                 <label for="password" class="form-label small fw-bold">Contraseña</label>
                 <input type="password" class="form-control" id="password" name="password" required placeholder="••••••••" />
             </div>
 
-            <div class="d-grid mt-4">
-                <button type="submit" class="btn text-white fw-bold" style="background-color: #002D62;">Ingresar</button>
+                                @* Link para recuperar contraseña *@
+            <div class="text-end mb-3">
+                <a href="#" class="text-decoration-none small text-muted">¿Olvidó su contraseña?</a>
+            </div>
+
+                                 @* Boton de enviar formulario *@
+            <div class="d-grid mt-2">
+            <button type="submit" class="btn text-white fw-bold" style="background-color: #002D62;">Ingresar</button>
             </div>
         </form>
 
-        <div class="text-center mt-4">
-            <small class="text-muted">Dirección General de Medicamentos, Alimentos y Productos Sanitarios (DIGEMAPS)</small>
+        <div class="position-relative my-4">
+            <hr />
+            <span class="position-absolute top-50 start-50 translate-middle bg-white px-2 small text-muted">o</span>
         </div>
-    </div>
+
+                                     @* Boton de google *@
+        <div class="d-grid mb-3">
+            <button type="button" class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 18 18">
+                    <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z" />
+                    <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.836.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" />
+                    <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.347 2.825.957 4.039l3.007-2.332z" />
+                    <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z" />
+                </svg>
+                <span class="small fw-semibold">Acceder con Google</span>
+        </button>
+        </div>
+
+        <div class="text-center mt-3">
+        <small class="text-muted" style="font-size: 0.75rem;">Dirección General de Medicamentos, Alimentos y Productos Sanitarios (DIGEMAPS)</small>
+        </div>
+ </div>
 </div>
